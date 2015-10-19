@@ -54,21 +54,22 @@
         }
         
         function onDeviceReady() {
-            window.alert("Loading PhoneGap is completed");
-			playAudio();
+            //window.alert("Loading PhoneGap is completed");
+			playAudio('lions.mp3');
         }
 
         var media = null;
         var mediaTimer = null;
 
-        function playAudio() {
+        function playAudio(src) {
 
-            var src = 'lions.mp3';
+           // var src = 'lions.mp3';
 
             media = new Media (getPath() + src , onSuccess, onError);
 
             //Play the audio. You can set number of the replaying time here.
-            media.play({numberOfLoops:"infinite"});
+            //media.play({numberOfLoops:"infinite"});
+            media.play();
 
             if (mediaTimer == null) {
 
@@ -83,11 +84,11 @@
                                 setAudioPosition((position) + " sec");
                                              
                                         //If the playback stops at "-0.001" position, replay the audio.
-                                        if(position == -0.001){
+                                       // if(position == -0.001){
 
-                                            media.play({numberOfLoops:"infinite"});
+                                        //    media.play({numberOfLoops:"infinite"});
             
-                                        }
+                                        //}
                             }
                         },
                         //A callback function in case of failure
@@ -126,8 +127,8 @@
 
           //A callback function in case of failure
           function onError(error) {
-              alert('code: '    + error.code    + '\n' + 
-                    'message: ' + error.message + '\n');
+              //alert('code: '    + error.code    + '\n' + 
+              //      'message: ' + error.message + '\n');
           }
 
           //Set the position of audio playback
